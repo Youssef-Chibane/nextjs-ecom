@@ -40,7 +40,7 @@ export const ProductCard = ({ product }: Props) => {
             </p>
           )}
           <Button asChild className="mt-4 bg-black text-white">
-            <Link href={"/products/1"}>View Details</Link>
+            <Link href={`/products/${product.id}`}>View Details</Link>
           </Button>
         </CardContent>
       </Card>
