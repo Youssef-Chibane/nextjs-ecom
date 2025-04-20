@@ -1,3 +1,4 @@
+import { ProductList } from "@/components/ProductList";
 import { Button } from "@/components/ui/button";
 import { stripe } from "@/lib/stripe";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import Link from "next/link";
 export default async function Home() {
   const products = await stripe.products.list({
     expand: ["data.default_price"],
-    limit: 5,
+    limit: 3,
   });
 
   return (
@@ -41,6 +42,12 @@ export default async function Home() {
             height={450}
           />
         </div>
+      </section>
+
+      {/* Latest Products Section */}
+      <section className="py-8">
+        <h3 className="text-2xl font-bold mb-6 text-center">Latest Products</h3>
+        <ProductList products={products.data} showSearch={false} />
       </section>
     </div>
   );
